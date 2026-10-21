@@ -20,6 +20,7 @@ import com.example.vkedu1.ui.theme.VkEdu1Theme
 @Composable
 fun AppListScreen(
     apps: List<AppInfo>,
+    onAppClick: (AppInfo) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -33,7 +34,7 @@ fun AppListScreen(
         ) {
             itemsIndexed(items = apps, key = { _, app -> app.id }) { index, app ->
                 Column {
-                    AppListItem(app = app)
+                    AppListItem(app = app, onClick = { onAppClick(app) })
                     if (index < apps.lastIndex) {
                         // 88dp = 16 (отступ) + 56 (иконка) + 16 (промежуток): линия начинается от текста
                         HorizontalDivider(
@@ -51,6 +52,6 @@ fun AppListScreen(
 @Composable
 private fun AppListScreenPreview() {
     VkEdu1Theme {
-        AppListScreen(apps = sampleApps)
+        AppListScreen(apps = sampleApps, onAppClick = {})
     }
 }
