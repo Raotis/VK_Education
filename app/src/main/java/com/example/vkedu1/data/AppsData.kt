@@ -1,0 +1,95 @@
+package com.example.vkedu1.data
+
+import com.example.vkedu1.data.dto.AppDto
+
+/** Захардкоженные данные для списка приложений (в виде DTO). */
+internal val appDtos: List<AppDto> = listOf(
+    AppDto(
+        id = "vk",
+        name = "ВКонтакте",
+        description = "Общение с друзьями, сообщества, музыка и видео",
+        category = "Социальные сети",
+        icon = "person",
+        iconColor = "#0077FF",
+    ),
+    AppDto(
+        id = "telegram",
+        name = "Telegram",
+        description = "Мессенджер с чатами, каналами и ботами",
+        category = "Социальные сети",
+        icon = "send",
+        iconColor = "#229ED9",
+    ),
+    AppDto(
+        id = "maps",
+        name = "Яндекс Карты",
+        description = "Карты, навигация и маршруты по городу",
+        category = "Карты",
+        icon = "location",
+        iconColor = "#00897B",
+    ),
+    AppDto(
+        id = "bank",
+        name = "Сбербанк Онлайн",
+        description = "Переводы, платежи и управление счетами",
+        category = "Финансы",
+        icon = "check",
+        iconColor = "#21A038",
+    ),
+    AppDto(
+        id = "music",
+        name = "Яндекс Музыка",
+        description = "Треки, подборки и персональные рекомендации",
+        category = "Музыка",
+        icon = "play",
+        iconColor = "#8E24AA",
+    ),
+    AppDto(
+        id = "kinopoisk",
+        name = "Кинопоиск",
+        description = "Фильмы и сериалы, рейтинги и новинки проката",
+        category = "Видео",
+        icon = "star",
+        iconColor = "#EF6C00",
+    ),
+    AppDto(
+        id = "ozon",
+        name = "Ozon",
+        description = "Интернет-магазин с доставкой и пунктами выдачи",
+        category = "Покупки",
+        icon = "cart",
+        iconColor = "#3F51B5",
+    ),
+    AppDto(
+        id = "food",
+        name = "Яндекс Еда",
+        description = "Доставка еды из ресторанов и продуктов из магазинов",
+        category = "Еда",
+        icon = "favorite",
+        iconColor = "#E91E63",
+    ),
+    AppDto(
+        id = "gosuslugi",
+        name = "Госуслуги",
+        description = "Документы, штрафы и записи к врачу онлайн",
+        category = "Утилиты",
+        icon = "info",
+        iconColor = "#607D8B",
+    ),
+    AppDto(
+        id = "duolingo",
+        name = "Duolingo",
+        description = "Изучение языков в формате коротких игровых уроков",
+        category = "Образование",
+        icon = "create",
+        iconColor = "#795548",
+    ),
+    AppDto(
+        id = "home",
+        name = "Умный дом",
+        description = "Управление светом, розетками и камерами с телефона",
+        category = "Утилиты",
+        icon = "home",
+        iconColor = "#455A64",
+    ),
+)
