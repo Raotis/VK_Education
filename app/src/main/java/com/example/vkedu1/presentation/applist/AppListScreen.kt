@@ -15,7 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.vkedu1.domain.AppInfo
 import com.example.vkedu1.presentation.appdetails.AppDetailsError
 import com.example.vkedu1.presentation.appdetails.AppDetailsLoading
@@ -30,7 +30,7 @@ import com.example.vkedu1.ui.theme.VkEdu1Theme
 fun AppListScreen(
     onAppClick: (AppInfo) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: AppListViewModel = viewModel(factory = AppListViewModel.Factory),
+    viewModel: AppListViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
 

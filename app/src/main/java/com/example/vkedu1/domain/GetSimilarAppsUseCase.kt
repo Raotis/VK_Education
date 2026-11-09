@@ -1,9 +1,11 @@
 package com.example.vkedu1.domain
 
+import javax.inject.Inject
+
 private const val SIMILAR_APPS_COUNT = 6
 
 /** Бизнес-правило: «похожие» — другие приложения из каталога, не больше шести. */
-class GetSimilarAppsUseCase(
+class GetSimilarAppsUseCase @Inject constructor(
     private val repository: AppsRepository,
 ) {
     suspend operator fun invoke(excludeId: String): List<AppInfo> =

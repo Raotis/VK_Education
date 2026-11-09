@@ -2,20 +2,22 @@ package com.example.vkedu1.presentation.applist
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.vkedu1.di.AppContainer
 import com.example.vkedu1.domain.GetAppsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-/** ViewModel списка приложений. Знает только про use case из domain. */
-class AppListViewModel(
+/**
+ * ViewModel списка приложений. Знает только про use case из domain.
+ * Use case приходит из Hilt (@Inject constructor) — вручную ViewModel больше нигде не создаётся.
+ */
+@HiltViewModel
+class AppListViewModel @Inject constructor(
     private val getAppsUseCase: GetAppsUseCase,
 ) : ViewModel() {
 
@@ -45,12 +47,5 @@ class AppListViewModel(
 
     companion object {
         private const val TAG = "AppListViewModel"
-
-        /** Фабрика: объясняет Android, как создать ViewModel с зависимостями. */
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                AppListViewModel(getAppsUseCase = AppContainer.getAppsUseCase)
-            }
-        }
     }
 }

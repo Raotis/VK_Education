@@ -2,9 +2,10 @@ package com.example.vkedu1.data.mapper
 
 import com.example.vkedu1.data.dto.AppDetailsDto
 import com.example.vkedu1.domain.AppDetails
+import javax.inject.Inject
 
 /** DTO -> Domain для карточки приложения. */
-class AppDetailsMapper {
+class AppDetailsMapper @Inject constructor() {
     fun toDomain(dto: AppDetailsDto): AppDetails = AppDetails(
         id = dto.id,
         name = dto.name,

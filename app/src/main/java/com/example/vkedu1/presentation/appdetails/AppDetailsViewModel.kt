@@ -3,16 +3,12 @@ package com.example.vkedu1.presentation.appdetails
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.vkedu1.di.AppContainer
 import com.example.vkedu1.domain.GetAppDetailsUseCase
 import com.example.vkedu1.domain.GetShowcaseAppsUseCase
 import com.example.vkedu1.domain.GetSimilarAppsUseCase
 import com.example.vkedu1.presentation.navigation.Routes
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -21,12 +17,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * ViewModel карточки приложения. Знает только про use case'ы из domain;
- * id приложения берёт из аргумента навигации.
+ * id приложения берёт из аргумента навигации (Hilt сам кладёт его в SavedStateHandle).
+ * Use case'ы приходят из Hilt (@Inject constructor).
  */
-class AppDetailsViewModel(
+@HiltViewModel
+class AppDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val getAppDetailsUseCase: GetAppDetailsUseCase,
     private val getSimilarAppsUseCase: GetSimilarAppsUseCase,
@@ -87,17 +86,5 @@ class AppDetailsViewModel(
 
     companion object {
         private const val TAG = "AppDetailsViewModel"
-
-        /** Фабрика: создаёт ViewModel с use case'ами и аргументами навигации (SavedStateHandle). */
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                AppDetailsViewModel(
-                    savedStateHandle = createSavedStateHandle(),
-                    getAppDetailsUseCase = AppContainer.getAppDetailsUseCase,
-                    getSimilarAppsUseCase = AppContainer.getSimilarAppsUseCase,
-                    getShowcaseAppsUseCase = AppContainer.getShowcaseAppsUseCase,
-                )
-            }
-        }
     }
 }

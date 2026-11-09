@@ -5,9 +5,10 @@ import com.example.vkedu1.data.mapper.AppMapper
 import com.example.vkedu1.domain.AppDetails
 import com.example.vkedu1.domain.AppInfo
 import com.example.vkedu1.domain.AppsRepository
+import javax.inject.Inject
 
 /** Реализация репозитория: берёт DTO из «сети» и превращает их мапперами в domain-модели. */
-class AppsRepositoryImpl(
+class AppsRepositoryImpl @Inject constructor(
     private val api: AppsApi,
     private val appMapper: AppMapper,
     private val appDetailsMapper: AppDetailsMapper,
